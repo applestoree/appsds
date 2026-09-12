@@ -1,0 +1,2 @@
+import type { ReactNode } from 'react'
+export function Modal({ open, children, onClose }: { open: boolean; children: ReactNode; onClose: () => void }) { if (!open) return null; return <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40"><div className="w-full max-w-[500px] rounded-t-3xl bg-white p-5"><button onClick={onClose} className="mb-3 text-sm text-neutral-500">Close</button>{children}</div></div> }

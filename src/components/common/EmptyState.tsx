@@ -1,0 +1,1 @@
+export function EmptyState({ message = 'No products found.' }: { message?: string }) { return <div className="flex min-h-40 items-center justify-center px-6 text-center text-sm text-neutral-500">{message}</div> }

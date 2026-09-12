@@ -1,0 +1,2 @@
+import type { Product } from '../../types/product'
+export function ProductInfo({ product }: { product: Product }) { return <section className="p-4"><div className="text-xs text-neutral-500">{product.brand} · {product.product_type}</div><h1 className="mt-1 text-2xl font-semibold tracking-tight">{product.title}</h1>{product.headline && <p className="mt-2 text-sm text-neutral-600">{product.headline}</p>}<p className="mt-3 text-xs text-neutral-500">{product.availability}</p></section> }

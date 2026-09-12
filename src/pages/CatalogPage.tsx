@@ -1,0 +1,7 @@
+import { useMemo, useState } from 'react'
+import { useProducts } from '../hooks/useProducts'
+import { ProductGrid } from '../components/product/ProductGrid'
+import { Loading } from '../components/common/Loading'
+import { EmptyState } from '../components/common/EmptyState'
+
+export function CatalogPage() { const { products, loading, error } = useProducts(); const [query, setQuery] = useState(''); const [category, setCategory] = useState(''); const categories = useMemo(() => [...new Set(products.map(p => p.product_type).filter(Boolean))], [products]); const filtered = useMemo(() => products.filter(p => (!category || p.product_type === category) && (!query || `${p.title} ${p.description}`.toLowerCase().includes(query.toLowerCase()))), [products, category, query]); return <div className="p-4"><div className="mb-4"><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search products" className="w-full rounded-2xl bg-neutral-100 px-4 py-3 outline-none" /></div><div className="mb-5 flex gap-2 overflow-x-auto pb-1"><button onClick={() => setCategory('')} className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs ${!category ? 'bg-black text-white' : 'bg-neutral-100'}`}>All</button>{categories.map(c => <button key={c} onClick={() => setCategory(c)} className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs ${category === c ? 'bg-black text-white' : 'bg-neutral-100'}`}>{c}</button>)}</div>{loading ? <Loading /> : error ? <EmptyState message={error} /> : filtered.length ? <ProductGrid products={filtered} /> : <EmptyState />}</div> }

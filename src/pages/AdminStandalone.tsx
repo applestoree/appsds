@@ -1,0 +1,2 @@
+import { Header } from '../components/layout/Header'
+export function AdminStandalone() { return <div className="mx-auto flex min-h-[100dvh] w-full max-w-[500px] flex-col bg-white"><Header standalone /><main className="min-h-0 flex-1 overflow-y-auto p-4"><h1 className="text-2xl font-semibold">Admin</h1><div className="mt-4 rounded-2xl bg-neutral-100 p-4 text-sm text-neutral-500">Admin tools are available here without exposing product data directly to the frontend database.</div></main></div> }
